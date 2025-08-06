@@ -12,6 +12,14 @@ const cardList = [
     desciption: "Demo desciption about kitten 3"
     }
     ]
+    const getProjects = () => {
+        $.get('/api/projects',(response) => {
+        if(response.statusCode==200){
+        addCards(response.data);
+    }
+        })
+    }
+        
     const clickMe = () => {
     alert("Thanks for clicking me. Hope you have a nice day!")
     }
@@ -37,11 +45,12 @@ const cardList = [
     });
     }
     $(document).ready(function(){
-    $('.materialboxed').materialbox();
-    $('#formSubmit').click(()=>{
-    submitForm();
-    })
-    addCards(cardList);
-    $('.modal').modal();
-    });
+        $('.materialboxed').materialbox();
+        $('#formSubmit').click(()=>{
+        submitForm();
+        })
+        getProjects();
+        $('.modal').modal();
+        });
+        
     
