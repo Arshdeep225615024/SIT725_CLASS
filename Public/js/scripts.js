@@ -1,17 +1,17 @@
-const cardList = [
-    {
-    title: "Kitten 2",
-    image: "images/kitten2.png",
-    link: "About Kitten 2",
-    desciption: "Demo desciption about kitten 2"
-    },
-    {
-    title: "Kitten 3",
-    image: "images/kitten3.png",
-    link: "About Kitten 3",
-    desciption: "Demo desciption about kitten 3"
-    }
-    ]
+// const cardList = [
+//     {
+//     title: "Kitten 2",
+//     image: "images/kitten2.png",
+//     link: "About Kitten 2",
+//     desciption: "Demo desciption about kitten 2"
+//     },
+//     {
+//     title: "Kitten 3",
+//     image: "images/kitten3.png",
+//     link: "About Kitten 3",
+//     desciption: "Demo desciption about kitten 3"
+//     }
+//     ]
     const getProjects = () => {
         $.get('/api/projects',(response) => {
         if(response.statusCode==200){
