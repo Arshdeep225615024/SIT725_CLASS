@@ -15,5 +15,8 @@
     "nodemon": "^3.1.10",
     "request": "^2.88.2",
     "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.1"
   }
 }

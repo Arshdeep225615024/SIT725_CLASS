@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const projectRoutes = require('./routes/projectRoutes');
 
 const app = express();
-const port = process.env.PORT || 3004;
+const PORT = process.env.PORT || 3004;
 
 const http = require('http').createServer(app); 
 const io = require('socket.io')(http);
@@ -38,6 +38,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/projects', projectRoutes);
 
 // Start server
-http.listen(port, () => {
-    console.log(`App listening on port ${port}`);
-});
+const server = http.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}`);
+  });
+
+module.exports = server;
