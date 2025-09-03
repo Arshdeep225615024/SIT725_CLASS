@@ -7,6 +7,19 @@ const projectRoutes = require('./routes/projectRoutes');
 const app = express();
 const port = process.env.PORT || 3004;
 
+const http = require('http').createServer(app); 
+const io = require('socket.io')(http);
+
+io.on('connection', (socket) => {
+    console.log('a user connected')
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+    });
+    setInterval(()=>{
+        socket.emit('number', parseInt(Math.random()*10));
+    }, 1000);
+});
+
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/myprojectDB', {
     useNewUrlParser: true,
@@ -25,6 +38,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/projects', projectRoutes);
 
 // Start server
-app.listen(port, () => {
+http.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });

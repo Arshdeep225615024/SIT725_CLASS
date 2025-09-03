@@ -12,6 +12,7 @@
 //     desciption: "Demo desciption about kitten 3"
 //     }
 //     ]
+const socket = io();
     const getProjects = () => {
         $.get('/api/projects',(response) => {
         if(response.statusCode==200){
@@ -53,4 +54,8 @@
         $('.modal').modal();
         });
         
-    
+        socket.on('number', (msg) => {
+            console.log('Random number:', msg);
+            document.getElementById('number').innerText = msg;
+            });
+            
